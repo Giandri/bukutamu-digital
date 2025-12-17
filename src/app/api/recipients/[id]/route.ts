@@ -3,9 +3,10 @@ import { prisma } from '@/lib/prisma'
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const { name, position, whatsapp, isActive } = await request.json()
 
     if (!name || !position) {
@@ -16,7 +17,7 @@ export async function PUT(
     }
 
     const recipient = await prisma.recipient.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         name,
         position,
@@ -41,12 +42,13 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     // Soft delete by setting isActive to false
     const recipient = await prisma.recipient.update({
-      where: { id: params.id },
+      where: { id },
       data: { isActive: false },
     })
 
