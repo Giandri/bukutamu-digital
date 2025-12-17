@@ -19,7 +19,7 @@ export async function GET() {
     })
 
     // Format data for frontend
-    const historyData = receptionLogs.map(log => {
+    const historyData = receptionLogs.map((log: any) => {
       // Find recipient based on guest.to field (recipient name)
       const recipientName = log.guest.to
 

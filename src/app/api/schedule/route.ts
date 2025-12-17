@@ -19,7 +19,7 @@ export async function GET() {
     })
 
     // Format data for frontend
-    const scheduleData = pendingGuests.map(guest => {
+    const scheduleData = pendingGuests.map((guest: any) => {
       // Format date and time
       const date = guest.createdAt.toLocaleDateString('id-ID', {
         weekday: 'long',
