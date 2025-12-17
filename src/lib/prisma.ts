@@ -1,9 +1,9 @@
-const { PrismaClient } = require('@prisma/client')
+import { PrismaClient } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { Pool } from 'pg'
 
 const globalForPrisma = globalThis as unknown as {
-  prisma: typeof PrismaClient.prototype | undefined
+  prisma: PrismaClient | undefined
 }
 
 export const prisma =
