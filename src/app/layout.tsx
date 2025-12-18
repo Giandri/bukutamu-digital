@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { IntroLoader } from "@/components/ui/intro-loader";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,7 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${poppins.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${poppins.variable} antialiased`}>
+        <IntroLoader />
+        {children}
+      </body>
     </html>
   );
 }
